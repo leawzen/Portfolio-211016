@@ -16,7 +16,7 @@
 }
 
 .sub-title {
-  font-size: 3rem;
+  font-size: 3vw;
   align-self: start;
   width: inherit;
   display: flex;
@@ -51,7 +51,7 @@ hr {
 }
 
 .part-1-main-text {
-  font-size: 10rem;
+  font-size: 10vw;
   position: relative;
   animation: tracking-in-contract-bck-top 1s;
   overflow: hidden;
@@ -110,7 +110,7 @@ hr {
 }
 
 .part-1-secondary-text {
-  font-size: 5rem;
+  font-size: 5vw;
   align-self: start;
   width: inherit;
   display: flex;
