@@ -29,8 +29,7 @@ var elementsToShow = document.querySelectorAll('.part-2-title');
 
 function loop() {
 
-    Array.prototype.forEach.call(elementsToShow, function(element){
-        debugger;
+    Array.prototype.forEach.call(elementsToShow, function(element){        
       if (isElementInViewport(element)) {
         element.classList.add('slide-in-left');
       } else {
