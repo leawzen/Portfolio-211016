@@ -35,17 +35,78 @@ hr {
   place-items: center;
   height: 100vh;
   width: 100vw;
-  background-image: url("../assets/bg-1.jpg");
+  /* background-image: url("../assets/bg-1.jpg");
   background-clip: text;
   color: transparent;
-  -webkit-background-clip: text;
+  -webkit-background-clip: text; */
   font-weight: 1000;
   font-family: "Luckiest Guy", cursive;
 }
+.slide-in-left {
+  animation: slide-in-left 1s;
+}
+
+.slide-in-right {
+  animation: slide-in-right 1s;
+}
+
 .part-1-main-text {
   font-size: 10rem;
+  position: relative;
+  animation: tracking-in-contract-bck-top 1s;
+  overflow: hidden;
+}
 
-  background-size: cover;
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(1000px) rotate(0deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes tracking-in-contract-bck {
+  0% {
+    letter-spacing: 1em;
+    transform: translateZ(400px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+@keyframes tracking-in-contract-bck-top {
+  0% {
+    letter-spacing: 1em;
+    transform: translateZ(400px) translateY(-300px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateZ(0) translateY(0);
+    opacity: 1;
+  }
 }
 
 .part-1-secondary-text {
@@ -55,6 +116,7 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: tracking-in-contract-bck 1s;
 }
 
 .part-2 {
