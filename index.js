@@ -87,3 +87,57 @@ function isElementInViewport(el) {
 
 
   let currentDateTime = new Date().toLocaleString();
+
+
+function httpGetAsync(theUrl, callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+
+if(sessionStorage.getItem("cData") == null){
+  let url = `https://covid-api.mmediagroup.fr/v1/cases?country=Malaysia`;
+  httpGetAsync(url, (r) => displayCovidData(r));
+}
+else{
+  displayCovidData();
+}
+
+function displayCovidData(data){
+  if(data == null){
+    data = sessionStorage.getItem("cData");
+  }
+  let covidData = JSON.parse(data);
+  let allConfirmedCount = covidData.All.confirmed;
+  let allDeathCount = covidData.All.deaths;
+  let allPopulation = covidData.All.population;
+  let allCountry = covidData.All.country;
+  let updated = covidData.Selangor.updated;
+  let text = `${allCountry} Cases - Confirmed: ${allConfirmedCount},  Death: ${allDeathCount}, Population: ${allPopulation} - Updated: ${updated} `  
+  setText(text);
+  console.log(covidData);
+}
+
+function setCovidData(r){
+  sessionStorage.setItem("cData",r);
+  
+}
+
+
+// function repeatSetText(){
+//   let url = `https://api.adviceslip.com/advice`;
+//     httpGetAsync(url, (r) => setText(JSON.parse(r)));
+//   setTimeout(() => {
+    
+//   },0);
+// }
+//repeatSetText();
+
+function setText(text){
+  document.querySelector('.typewriter').innerText = text;
+}

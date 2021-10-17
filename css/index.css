@@ -183,6 +183,7 @@ hr:nth-of-type(2) {
   grid-auto-rows: 1fr;
   place-items: center;
   justify-content: space-around;
+  overflow: hidden;
 }
 
 .part-2-title,
@@ -228,6 +229,7 @@ hr:nth-of-type(2) {
   place-items: center;
   justify-content: space-around;
   margin-bottom: 3rem;
+  overflow: hidden;
 }
 
 .part-3-square {
@@ -303,6 +305,7 @@ hr:nth-of-type(2) {
   justify-content: space-around;
   perspective: 800px;
   padding-bottom: 15vh;
+  overflow: hidden;
 }
 
 .part-4-image {
