@@ -2,6 +2,7 @@
   margin: 0;
   box-sizing: border-box;
   padding: 0;
+  overflow-x: hidden;
 }
 
 :root {
@@ -54,11 +55,34 @@ hr:nth-of-type(2) {
   width: 100vw;
   /* background-image: url("../assets/bg-1.jpg");
   background-clip: text;
-  color: transparent;
   -webkit-background-clip: text; */
   font-weight: 1000;
   font-family: "Luckiest Guy", cursive;
 }
+
+.bg {
+  background-image: url("../assets//bg-1.jpg");
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  /* z-index: ; */
+  clip-path: circle(10% at 95% 1%);
+  transition: clip-path 2s ease-in-out;
+}
+
+.bg:hover {
+  clip-path: circle(100%);
+}
+
+.bg:hover ~ .part-1 .part-1-main-text {
+  color: #fff;
+}
+
+.bg:hover ~ .part-1 .part-1-secondary-text {
+  color: #fff;
+}
+
 .slide-in-left {
   animation: slide-in-left 1s;
 }
@@ -69,11 +93,42 @@ hr:nth-of-type(2) {
 
 .part-1-main-text {
   font-size: 10vw;
-  position: relative;
+  /* position: relative; */
   animation: tracking-in-contract-bck-top 1s;
+  animation-fill-mode: forwards;
   overflow: hidden;
+  transition: color 2s;
 }
 
+@keyframes tracking-in-contract-bck-top {
+  0% {
+    letter-spacing: 1em;
+    transform: translateZ(400px) translateY(-300px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateZ(0) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes tracking-in-contract-bck {
+  0% {
+    letter-spacing: 1em;
+    transform: translateZ(400px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
 @keyframes slide-in-left {
   0% {
     transform: translateX(-1000px);
@@ -108,36 +163,6 @@ hr:nth-of-type(2) {
   }
 }
 
-@keyframes tracking-in-contract-bck {
-  0% {
-    letter-spacing: 1em;
-    transform: translateZ(400px);
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.6;
-  }
-  100% {
-    transform: translateZ(0);
-    opacity: 1;
-  }
-}
-
-@keyframes tracking-in-contract-bck-top {
-  0% {
-    letter-spacing: 1em;
-    transform: translateZ(400px) translateY(-300px);
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.6;
-  }
-  100% {
-    transform: translateZ(0) translateY(0);
-    opacity: 1;
-  }
-}
-
 .part-1-secondary-text {
   font-size: 5vw;
   align-self: start;
@@ -146,6 +171,8 @@ hr:nth-of-type(2) {
   justify-content: center;
   align-items: center;
   animation: tracking-in-contract-bck 1s;
+  z-index: 0;
+  transition: color 2s;
 }
 
 .part-2 {
