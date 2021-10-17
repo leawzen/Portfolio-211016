@@ -23,8 +23,7 @@
 // }
 
 
-var scroll = window.requestAnimationFrame ||             
-             function(callback){ window.setTimeout(callback, 1000/60)};
+var scroll = window.requestAnimationFrame;
 var elementsToShow = document.querySelectorAll('.part-2-title'); 
 
 
@@ -48,6 +47,18 @@ function loop() {
             }
           });              
     }
+
+    for(let i =1; i <= 5; i++){
+      const part4Image = document.querySelectorAll('.part-4-image-'+ i); 
+      let currentCss = i % 2 == 0 ? 'slide-in-right-part-4' : 'slide-in-left-part-4';
+      Array.prototype.forEach.call(part4Image, function(element){        
+          if (isElementInViewport(element)) {
+            element.classList.add(currentCss);
+          } else {
+            element.classList.remove(currentCss);
+          }
+        });              
+  }
 
     scroll(loop);
 }
@@ -73,3 +84,6 @@ function isElementInViewport(el) {
         rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
     );
   }
+
+
+  let currentDateTime = new Date().toLocaleString();
